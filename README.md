@@ -33,7 +33,6 @@ A wearable sensor list app that displays the sensors using WearableRecyclerView.
 
 
 &nbsp;
-
 ### SDK Info : 
 Min SDK : 25  | Target SDK : 29 | Gradle : 5.4.1  | Kotlin 
 
@@ -41,15 +40,14 @@ Min SDK : 25  | Target SDK : 29 | Gradle : 5.4.1  | Kotlin
 &nbsp;
 ### Device Requirements : 
 Wear OS 2.x
+
+
 &nbsp;
-
-
 ### Android Studio Version : 
 Android Studio 3.5.2
 
 
 &nbsp;
-
 © 2019. Developed by Bharath Vishal G (https://github.com/BharathVishal).
 
 Thank you. :smile:
