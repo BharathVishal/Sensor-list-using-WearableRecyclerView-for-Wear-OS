@@ -47,6 +47,7 @@ Wear OS 2.x
 Android Studio 3.5.2
 
 
+
 &nbsp;
 © 2019. Developed by Bharath Vishal G (https://github.com/BharathVishal).
 
