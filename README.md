@@ -13,16 +13,17 @@ A wearable sensor list app that displays the sensors using WearableRecyclerView.
 - View list of all sensors on your wearable device.
 - Displays sensor vendor
 - Has full crown support for scrolling
+- Supports both round and square Wear OS devices
 
 &nbsp;
 ### Preview : 
-![Preview](https://github.com/BharathVishal/App-Manager-Android/blob/master/Preview/PreviewGif.gif)
+![Preview](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Preview/PreviewGif.gif)
 
 
 &nbsp;
 ### Screenshots : 
-![Screenshot 1](https://github.com/BharathVishal/App-Manager-Android/blob/master/Screenshots/1.png?s=20)
-![Screenshot 2](https://github.com/BharathVishal/App-Manager-Android/blob/master/Screenshots/2.png?s=20)
+![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/1.png?s=10)
+![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=10)
 
 
 
@@ -34,8 +35,12 @@ A wearable sensor list app that displays the sensors using WearableRecyclerView.
 &nbsp;
 
 ### SDK Info : 
-Min SDK : 25  | Target SDK : 29 | Gradle : 5.4.1  | Kotlin
+Min SDK : 25  | Target SDK : 29 | Gradle : 5.4.1  | Kotlin 
 
+
+&nbsp;
+### Device Requirements : 
+Wear OS 2.x
 &nbsp;
 
 
