@@ -23,7 +23,6 @@ A wearable sensor list app that displays the sensors using WearableRecyclerView.
 &nbsp;
 ### Screenshots : 
 ![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/1.png?s=10)
-![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/2.png?s=10)
 ![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=10)
 
 
