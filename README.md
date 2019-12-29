@@ -1,4 +1,4 @@
-# Sensor-list-using-WearableRecyclerView
+# Sensor-list-using-WearableRecyclerView-Wear OS
  
 A wearable sensor list app for Wear OS that displays the sensors using WearableRecyclerView.
 
