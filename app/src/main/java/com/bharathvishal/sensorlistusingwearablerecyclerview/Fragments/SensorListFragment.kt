@@ -8,17 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.wear.widget.WearableLinearLayoutManager
-import com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.MainActivity
-import com.bharathvishal.sensorlistusingwearablerecyclerview.Callbacks.CustomScrollingLayoutCallbackWear
-import com.bharathvishal.wearablerecyclerviewsample.R
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Adapters.SensorAdapter
+import com.bharathvishal.sensorlistusingwearablerecyclerview.Callbacks.CustomScrollingLayoutCallbackWear
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Utilities.InfoUtilities
+import com.bharathvishal.wearablerecyclerviewsample.R
 import kotlinx.android.synthetic.main.fragment_sensor_info.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.*
+import java.lang.ref.WeakReference
 import java.util.*
 
-class SensorListFragment : Fragment() {
+class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
     private var sensorList: List<Sensor>? = null
     private var adapter: SensorAdapter? = null
     private var wearablerecyclerViewLayoutManager: WearableLinearLayoutManager? = null
@@ -52,7 +51,7 @@ class SensorListFragment : Fragment() {
             displayHideProgressBar(true)
 
             //Async
-            getSensors(activityContext as MainActivity)
+            getSensors(activityContext!!)
         }
     }
 
@@ -70,39 +69,49 @@ class SensorListFragment : Fragment() {
     }
 
 
-    private fun getSensors(context: Context) {
-        doAsync {
-            if (context != null) {
-                sensorList = InfoUtilities.getSensorDetails(context)
-                adapter = if (sensorList != null) {
-                    val tempItemList1 = ArrayList<Sensor>()
-                    tempItemList1.addAll(sensorList!!)
-                    SensorAdapter(
-                        context,
-                        tempItemList1
-                    )
-                } else {
-                    val tempItemList = ArrayList<Sensor>()
-                    SensorAdapter(
-                        context,
-                        tempItemList
-                    )
+    fun getSensors(context: Context) {
+        val contextRef: WeakReference<Context> = WeakReference(context)
+
+        //Coroutine
+        launch(Dispatchers.Default) {
+            try {
+                val contextInner = contextRef.get()
+
+                if (contextInner != null) {
+                    sensorList = InfoUtilities.getSensorDetails(contextInner)
+                    adapter = if (sensorList != null) {
+                        val tempItemList1 = ArrayList<Sensor>()
+                        tempItemList1.addAll(sensorList!!)
+                        SensorAdapter(
+                            contextInner,
+                            tempItemList1
+                        )
+                    } else {
+                        val tempItemList = ArrayList<Sensor>()
+                        SensorAdapter(
+                            contextInner,
+                            tempItemList
+                        )
+                    }
                 }
-            }
 
-            uiThread {
-                sensor_List_RecyclerView?.layoutManager = wearablerecyclerViewLayoutManager
-                sensor_List_RecyclerView?.setHasFixedSize(true)
+                //UI Thread
+                withContext(Dispatchers.Main) {
+                    sensor_List_RecyclerView?.layoutManager = wearablerecyclerViewLayoutManager
+                    sensor_List_RecyclerView?.setHasFixedSize(true)
 
-                if (adapter?.itemCount!! > 0) {
-                    sensor_List_RecyclerView?.adapter = adapter
-                } else {
-                    no_sensors_textView?.visibility = View.VISIBLE
-                    sensor_List_RecyclerView?.visibility = View.GONE
+                    if (adapter?.itemCount!! > 0) {
+                        sensor_List_RecyclerView?.adapter = adapter
+                    } else {
+                        no_sensors_textView?.visibility = View.VISIBLE
+                        sensor_List_RecyclerView?.visibility = View.GONE
+                    }
+                    displayHideProgressBar(false)
+
+                    sensor_List_RecyclerView?.requestFocus()
                 }
-                displayHideProgressBar(false)
-
-                sensor_List_RecyclerView?.requestFocus()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
             }
         }
     }
