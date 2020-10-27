@@ -13,7 +13,7 @@ A wearable sensor list app for Wear OS that displays the sensors using WearableR
 - View list of all sensors on your wearable device.
 - Displays sensor vendor
 - Has full crown support for scrolling
-- Supports both round and square Wear OS devices
+- Supports round, rounded chin and square Wear OS devices
 
 &nbsp;
 ### Preview : 
