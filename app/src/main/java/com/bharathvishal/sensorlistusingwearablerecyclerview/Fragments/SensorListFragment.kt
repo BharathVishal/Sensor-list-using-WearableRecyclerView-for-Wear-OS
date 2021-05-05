@@ -11,8 +11,7 @@ import androidx.wear.widget.WearableLinearLayoutManager
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Adapters.SensorAdapter
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Callbacks.CustomScrollingLayoutCallbackWear
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Utilities.InfoUtilities
-import com.bharathvishal.wearablerecyclerviewsample.R
-import kotlinx.android.synthetic.main.fragment_sensor_info.*
+import com.bharathvishal.wearablerecyclerviewsample.databinding.FragmentSensorInfoBinding
 import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
 import java.util.*
@@ -22,6 +21,9 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
     private var adapter: SensorAdapter? = null
     private var wearablerecyclerViewLayoutManager: WearableLinearLayoutManager? = null
 
+    private var _binding: FragmentSensorInfoBinding? = null
+    private val binding get() = _binding!!
+
     private var activityContext: Context? = null
     var customScrollingLayoutCallback: CustomScrollingLayoutCallbackWear? = null
 
@@ -30,7 +32,9 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sensor_info, container, false)
+        _binding = FragmentSensorInfoBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,13 +62,13 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
 
     private fun displayHideProgressBar(show: Boolean?) {
         if (show == true) {
-            sensorinfoProgressLLayout?.visibility = View.VISIBLE
-            sensorinfoProgressSpinner?.visibility = View.VISIBLE
-            sensor_List_RecyclerView?.visibility = View.INVISIBLE
+            binding.sensorinfoProgressLLayout.visibility = View.VISIBLE
+            binding.sensorinfoProgressSpinner.visibility = View.VISIBLE
+            binding.sensorListRecyclerView.visibility = View.INVISIBLE
         } else {
-            sensorinfoProgressLLayout?.visibility = View.GONE
-            sensorinfoProgressSpinner?.visibility = View.GONE
-            sensor_List_RecyclerView?.visibility = View.VISIBLE
+            binding.sensorinfoProgressLLayout.visibility = View.GONE
+            binding.sensorinfoProgressSpinner.visibility = View.GONE
+            binding.sensorListRecyclerView.visibility = View.VISIBLE
         }
     }
 
@@ -97,22 +101,27 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
 
                 //UI Thread
                 withContext(Dispatchers.Main) {
-                    sensor_List_RecyclerView?.layoutManager = wearablerecyclerViewLayoutManager
-                    sensor_List_RecyclerView?.setHasFixedSize(true)
+                    binding.sensorListRecyclerView.layoutManager = wearablerecyclerViewLayoutManager
+                    binding.sensorListRecyclerView.setHasFixedSize(true)
 
                     if (adapter?.itemCount!! > 0) {
-                        sensor_List_RecyclerView?.adapter = adapter
+                        binding.sensorListRecyclerView.adapter = adapter
                     } else {
-                        no_sensors_textView?.visibility = View.VISIBLE
-                        sensor_List_RecyclerView?.visibility = View.GONE
+                        binding.noSensorsTextView.visibility = View.VISIBLE
+                        binding.sensorListRecyclerView.visibility = View.GONE
                     }
                     displayHideProgressBar(false)
 
-                    sensor_List_RecyclerView?.requestFocus()
+                    binding.sensorListRecyclerView.requestFocus()
                 }
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

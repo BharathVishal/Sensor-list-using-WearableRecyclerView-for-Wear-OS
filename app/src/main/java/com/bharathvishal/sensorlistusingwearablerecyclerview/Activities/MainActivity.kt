@@ -8,29 +8,32 @@ import android.support.wearable.input.RotaryEncoder
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import androidx.core.widget.NestedScrollView
 import androidx.wear.ambient.AmbientModeSupport
 import com.bharathvishal.wearablerecyclerviewsample.R
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Fragments.SensorListFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.bharathvishal.wearablerecyclerviewsample.databinding.ActivityMainBinding
 import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProvider {
     val ambientLogTag = "Ambient"
     private lateinit var ambientController: AmbientModeSupport.AmbientController
     private var activityContextMain: Context? = null
+    private lateinit var binding: ActivityMainBinding
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         try {
             activityContextMain = this@MainActivity
             ambientController = AmbientModeSupport.attach(this@MainActivity)
 
             try {
-                contentMainScroll?.setOnGenericMotionListener(View.OnGenericMotionListener { v, ev ->
+                binding.contentMainScroll.setOnGenericMotionListener(View.OnGenericMotionListener { v, ev ->
                     if (ev.action == MotionEvent.ACTION_SCROLL && RotaryEncoder.isFromRotaryEncoder(
                             ev
                         )
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProv
 
                         //Log.d("scroll1", "invoked this " + delta.roundToInt())
                         // Swap these axes if you want to do horizontal scrolling instead
-                        contentMainScroll?.scrollBy(0, delta.roundToInt())
+                        binding.contentMainScroll?.scrollBy(0, delta.roundToInt())
 
                         return@OnGenericMotionListener true
                     }
