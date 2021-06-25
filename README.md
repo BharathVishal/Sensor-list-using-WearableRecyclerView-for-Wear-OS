@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio 4.2
+Android Studio 4.2.1
 
 
 
