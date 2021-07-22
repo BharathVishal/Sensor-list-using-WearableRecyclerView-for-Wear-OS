@@ -1,16 +1,17 @@
 package com.bharathvishal.sensorlistusingwearablerecyclerview.Activities
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.wearable.activity.WearableActivity
-import android.support.wearable.input.RotaryEncoder
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
+import android.view.ViewConfiguration
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.InputDeviceCompat
+import androidx.core.view.MotionEventCompat
+import androidx.core.view.ViewConfigurationCompat
 import androidx.wear.ambient.AmbientModeSupport
-import com.bharathvishal.wearablerecyclerviewsample.R
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Fragments.SensorListFragment
+import com.bharathvishal.wearablerecyclerviewsample.R
 import com.bharathvishal.wearablerecyclerviewsample.databinding.ActivityMainBinding
 import kotlin.math.roundToInt
 
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProv
     private var activityContextMain: Context? = null
     private lateinit var binding: ActivityMainBinding
 
-    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,23 +33,21 @@ class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProv
             ambientController = AmbientModeSupport.attach(this@MainActivity)
 
             try {
-                binding.contentMainScroll.setOnGenericMotionListener(View.OnGenericMotionListener { v, ev ->
-                    if (ev.action == MotionEvent.ACTION_SCROLL && RotaryEncoder.isFromRotaryEncoder(
-                            ev
-                        )
+                binding.contentMainScroll.setOnGenericMotionListener { v, ev ->
+                    if (ev.action == MotionEvent.ACTION_SCROLL &&
+                        ev.isFromSource(InputDeviceCompat.SOURCE_ROTARY_ENCODER)
                     ) {
-                        // Don't forget the negation here
-                        val delta = -RotaryEncoder.getRotaryAxisValue(ev) *
-                                RotaryEncoder.getScaledScrollFactor(activityContextMain)
+                        val delta = -ev.getAxisValue(MotionEventCompat.AXIS_SCROLL) *
+                                ViewConfigurationCompat.getScaledVerticalScrollFactor(
+                                    ViewConfiguration.get(activityContextMain), activityContextMain as MainActivity
+                                )
 
-                        //Log.d("scroll1", "invoked this " + delta.roundToInt())
-                        // Swap these axes if you want to do horizontal scrolling instead
-                        binding.contentMainScroll?.scrollBy(0, delta.roundToInt())
-
-                        return@OnGenericMotionListener true
+                        binding.contentMainScroll.scrollBy(0, delta.roundToInt())
+                        true
+                    } else {
+                        false
                     }
-                    false
-                })
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -82,11 +80,7 @@ class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProv
             super.onEnterAmbient(ambientDetails)
             try {
                 Log.d(ambientLogTag, "Ambient mode entered")
-                val burnIn = ambientDetails?.getBoolean(WearableActivity.EXTRA_BURN_IN_PROTECTION)
-                val lowBit = ambientDetails?.getBoolean(WearableActivity.EXTRA_LOWBIT_AMBIENT)
-                Log.d(ambientLogTag, "burnIn protection : $burnIn")
-                Log.d(ambientLogTag, "lowBit : $lowBit")
-                Log.d(ambientLogTag, "isAmbient : " + ambientController?.isAmbient)
+                Log.d(ambientLogTag, "isAmbient : " + ambientController.isAmbient)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

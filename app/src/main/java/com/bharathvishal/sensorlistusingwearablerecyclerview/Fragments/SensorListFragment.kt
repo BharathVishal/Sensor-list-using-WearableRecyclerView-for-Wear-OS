@@ -25,16 +25,15 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
     private val binding get() = _binding!!
 
     private var activityContext: Context? = null
-    var customScrollingLayoutCallback: CustomScrollingLayoutCallbackWear? = null
+    private var customScrollingLayoutCallback: CustomScrollingLayoutCallbackWear? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSensorInfoBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +42,7 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
         sensorList = ArrayList()
 
         if (isAdded) {
-            activityContext = activity as Context?
+            activityContext = activity
             customScrollingLayoutCallback =
                 CustomScrollingLayoutCallbackWear()
 
@@ -73,7 +72,7 @@ class SensorListFragment : Fragment(), CoroutineScope by MainScope() {
     }
 
 
-    fun getSensors(context: Context) {
+    private fun getSensors(context: Context) {
         val contextRef: WeakReference<Context> = WeakReference(context)
 
         //Coroutine
