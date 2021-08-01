@@ -29,6 +29,7 @@
         <activity
             android:name="com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.MainActivity"
             android:noHistory="true"
+            android:exported="true"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
