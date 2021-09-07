@@ -9,8 +9,8 @@ android {
         applicationId "com.bharathvishal.sensorlistusingwearablerecyclerview"
         minSdkVersion 25
         targetSdkVersion 31
-        versionCode 25
-        versionName "1.2.8"
+        versionCode 28
+        versionName "1.2.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         wearAppUnbundled true
     }
