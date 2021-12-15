@@ -9,8 +9,8 @@ android {
         applicationId "com.bharathvishal.sensorlistusingwearablerecyclerview"
         minSdkVersion 25
         targetSdkVersion 31
-        versionCode 35
-        versionName "1.4"
+        versionCode 40
+        versionName "1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         wearAppUnbundled true
     }
@@ -53,7 +53,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.wear:wear:1.2.0'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
     implementation 'com.google.android.material:material:1.4.0'
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
     implementation 'com.google.android.support:wearable:2.8.1'
