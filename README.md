@@ -34,7 +34,7 @@ A wearable sensor list app for Wear OS that displays the sensors using WearableR
 
 &nbsp;
 ### SDK Info : 
-Min SDK : 25  | Target SDK : 32 | Gradle : 7.1.2  | Kotlin 
+Min SDK : 25  | Target SDK : 32 | Gradle : 7.1.3  | Kotlin 
 
 
 &nbsp;
@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio Bumblebee | 2021.1.1 Patch 2
+Android Studio Bumblebee | 2021.1.1 Patch 3
 
 
 
