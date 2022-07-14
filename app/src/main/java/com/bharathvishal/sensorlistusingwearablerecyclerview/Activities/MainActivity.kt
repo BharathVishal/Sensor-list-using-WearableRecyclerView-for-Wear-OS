@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), AmbientModeSupport.AmbientCallbackProv
                     ) {
                         val delta = -ev.getAxisValue(MotionEventCompat.AXIS_SCROLL) *
                                 ViewConfigurationCompat.getScaledVerticalScrollFactor(
-                                    ViewConfiguration.get(activityContextMain), activityContextMain as MainActivity
+                                    ViewConfiguration.get(activityContextMain as MainActivity), activityContextMain as MainActivity
                                 )
 
                         binding.contentMainScroll.scrollBy(0, delta.roundToInt())
