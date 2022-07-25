@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio Bumblebee | 2021.2.1 Patch 1
+Android Studio Chipmunk | 2021.2.1 Patch 1
 
 
 
