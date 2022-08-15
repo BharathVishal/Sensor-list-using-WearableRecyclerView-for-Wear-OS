@@ -27,16 +27,29 @@
 
 
         <activity
-            android:name="com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.MainActivity"
-            android:noHistory="true"
+            android:name="com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.SplashActivity"
             android:exported="true"
-            tools:ignore="InnerclassSeparator">
+            android:resizeableActivity="true"
+            tools:targetApi="n">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.MainActivity"
+            android:exported="true"
+            android:resizeableActivity="true"
+            tools:targetApi="n" />
+
+
+        <activity
+            android:name="com.bharathvishal.sensorlistusingwearablerecyclerview.Activities.MainActivityCompose"
+            android:exported="true"
+            android:resizeableActivity="true"
+            tools:targetApi="n" />
+
     </application>
 
 </manifest>
