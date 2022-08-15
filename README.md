@@ -22,9 +22,9 @@ A wearable sensor list app for Wear OS that displays the sensors using ScalingLa
 
 &nbsp;
 ### Screenshots : 
-![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/1.png?s=10)
-![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=10)
-![Screenshot 3](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/4.png?s=10)
+![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/1.png?s=20)
+![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=20)
+![Screenshot 3](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/4.png?s=20)
 
 
 &nbsp;
