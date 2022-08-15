@@ -1,6 +1,6 @@
 # Sensor-list-using-WearableRecyclerView-Wear OS
  
-A wearable sensor list app for Wear OS that displays the sensors using WearableRecyclerView.
+A wearable sensor list app for Wear OS that displays the sensors using ScalingLazyColumn in Jetpack Compose and using WearableRecyclerView in xml. Wearable app with compose for wear implementation.
 
 &nbsp;
 ### Usage:
@@ -24,7 +24,7 @@ A wearable sensor list app for Wear OS that displays the sensors using WearableR
 ### Screenshots : 
 ![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/1.png?s=10)
 ![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=10)
-
+![Screenshot 3](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/4.png?s=10)
 
 
 &nbsp;
@@ -34,7 +34,7 @@ A wearable sensor list app for Wear OS that displays the sensors using WearableR
 
 &nbsp;
 ### SDK Info : 
-Min SDK : 25  | Target SDK : 33 | Gradle : 7.2.2  | Kotlin 
+Min SDK : 25  | Target SDK : 33 | Gradle : 7.2.2  | Kotlin | Jetpack Compose
 
 
 &nbsp;
