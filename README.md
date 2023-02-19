@@ -50,7 +50,7 @@ Android Studio Electric Eel | 2022.1.1
 &nbsp;
 
 #### License : 
-[Apache License 2.0](https://github.com/BharathVishal/Message-communication-using-Wearable-Data-Layer-Android-Wear-OS/blob/master/LICENSE)
+[Apache License 2.0](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-Wear-OS/blob/master/LICENSE)
 &nbsp;
 
 &nbsp;
