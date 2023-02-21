@@ -55,6 +55,5 @@ Android Studio Electric Eel | 2022.1.1
 
 &nbsp;
 
-© 2019-2023. Developed by Bharath Vishal G (https://github.com/BharathVishal).
+© 2019-2023. Developed by Bharath Vishal G (https://github.com/BharathVishal). Thank you. :slightly_smiling_face:
 
-Thank you. :smile:
