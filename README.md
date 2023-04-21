@@ -12,6 +12,7 @@ A wearable sensor list app for Wear OS that displays the sensors using ScalingLa
 ### Features :
 - View list of all sensors on your wearable device.
 - Displays sensor vendor
+- Has a JetPack compose version.
 - Has full crown support for scrolling
 - Supports round, rounded chin and square Wear OS devices
 
