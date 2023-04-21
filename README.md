@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio Electric Eel | 2022.1.1 
+Android Studio Flamingo | 2022.2.1 
 
 
 
