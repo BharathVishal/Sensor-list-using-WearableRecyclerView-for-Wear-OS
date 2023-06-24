@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "33.0.0"
+    compileSdkVersion 34
+    buildToolsVersion "34.0.0"
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
         applicationId "com.bharathvishal.sensorlistusingwearablerecyclerview"
         minSdkVersion 25
-        targetSdkVersion 33
-        versionCode 84
-        versionName "3.0"
+        targetSdkVersion 34
+        versionCode 86
+        versionName "3.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         wearAppUnbundled true
     }
@@ -44,7 +44,7 @@ android {
         jvmTarget = "17"
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.4.6"
+        kotlinCompilerExtensionVersion "1.4.7"
     }
     packagingOptions {
         jniLibs {
@@ -61,7 +61,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -72,20 +72,20 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.wear:wear:1.2.0'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     compileOnly 'com.google.android.wearable:wearable:2.9.0'
     implementation 'com.google.android.support:wearable:2.9.0'
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.28.0"
 
-    implementation 'androidx.compose.material3:material3:1.1.0-rc01'
-    implementation 'androidx.compose.material:material-icons-extended:1.5.0-alpha03'
-    implementation "androidx.activity:activity-compose:1.7.1"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.4.2"
+    implementation 'androidx.compose.material3:material3:1.2.0-alpha03'
+    implementation 'androidx.compose.material:material-icons-extended:1.6.0-alpha01'
+    implementation "androidx.activity:activity-compose:1.7.2"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.3"
     // Compose for Wear OS Dependencies
     implementation "androidx.wear.compose:compose-material:1.1.2"
     // Foundation is additive, so you can use the mobile version in your Wear OS app.
     implementation "androidx.wear.compose:compose-foundation:1.1.2"
     // Testing
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.4.2"
-    debugImplementation "androidx.compose.ui:ui-tooling:1.4.2"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.4.3"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.4.3"
 }
