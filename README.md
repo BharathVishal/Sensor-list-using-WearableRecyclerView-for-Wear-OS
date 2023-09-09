@@ -34,7 +34,7 @@ A wearable sensor list app for Wear OS that displays the sensors using ScalingLa
 
 &nbsp;
 ### SDK Info : 
-Min SDK : 25  | Target SDK : 34 | Gradle : 8.0.2  | Kotlin | Jetpack Compose
+Min SDK : 25  | Target SDK : 34 | Gradle : 8.1.1  | Kotlin | Jetpack Compose
 
 
 &nbsp;
@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio Flamingo | 2022.2.1 Patch 2
+Android Studio Giraffe | 2022.3.1 Patch 1
 
 
 
