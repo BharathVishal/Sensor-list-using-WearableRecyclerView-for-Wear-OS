@@ -25,6 +25,7 @@ package com.bharathvishal.sensorlistusingwearablerecyclerview.Adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.Sensor
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class SensorAdapter(private val context1: Context, private val stringList: Mutab
         var textViewsensorVendor: TextView
 
         init {
+            Log.d("sensor1","init block")
             cardView = view.findViewById(R.id.card_view_sensor)
             textViewSensorName = view.findViewById(R.id.sensor_Name_Text)
             textViewsensorVendor = view.findViewById(R.id.sensor_Vendor_Text)
