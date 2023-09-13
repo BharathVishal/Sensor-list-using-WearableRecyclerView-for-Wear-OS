@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
         //For testing purpose
         //1 - Default Main Activity with xml
         //2 - Main activity with Jetpack Compose
-        val activityTypeToLaunch = 1
+        val activityTypeToLaunch = 2
 
         if (activityTypeToLaunch == 1) {
             val intent = Intent(actvityContext, MainActivity::class.java)

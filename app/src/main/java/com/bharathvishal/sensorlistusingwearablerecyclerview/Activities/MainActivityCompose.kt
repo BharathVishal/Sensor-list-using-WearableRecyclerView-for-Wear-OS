@@ -26,22 +26,50 @@ import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.MutatePriority
+import androidx.compose.foundation.focusable
+import androidx.compose.foundation.gestures.animateScrollBy
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.rotary.onPreRotaryScrollEvent
+import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.wear.ambient.AmbientModeSupport
-import androidx.wear.compose.material.ScalingLazyColumn
-import androidx.wear.compose.material.items
+import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
+import androidx.wear.compose.foundation.lazy.items
+import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
+import androidx.wear.compose.material.Chip
+import androidx.wear.compose.material.ChipDefaults
+import androidx.wear.compose.material.PositionIndicator
+import androidx.wear.compose.material.Scaffold
+import androidx.wear.compose.material.TimeText
+import androidx.wear.compose.material.Vignette
+import androidx.wear.compose.material.VignettePosition
 import com.bharathvishal.sensorlistusingwearablerecyclerview.Utilities.InfoUtilities
 import com.bharathvishal.sensorlistusingwearablerecyclerview.theme.Material3AppTheme
 import com.bharathvishal.wearablerecyclerviewsample.R
@@ -155,9 +183,6 @@ class MainActivityCompose : AppCompatActivity(), AmbientModeSupport.AmbientCallb
                     horizontalAlignment = Alignment.CenterHorizontally,
                 )
                 {
-                    LogoAndAppNameComposable()
-                    CircularProgressAnimated(progressVisibilityVal.value)
-                    NoSensorsOnWearableDeviceComposable(noSensorsOnDeviceVisVal.value)
                     ScalingLazyColumnComposable(lazyComposeViewVisibilityVal.value)
                 }//end of column
             }//end of card
@@ -166,14 +191,14 @@ class MainActivityCompose : AppCompatActivity(), AmbientModeSupport.AmbientCallb
 
     @Composable
     fun LogoAndAppNameComposable() {
-        Spacer(modifier = Modifier.padding(top = 10.dp))
+        Spacer(modifier = Modifier.padding(top = 1.dp))
 
         Image(
             painter = painterResource(R.drawable.sensor_info_frg),
             contentDescription = "Image Logo",
             modifier = Modifier
-                .requiredHeight(50.dp)
-                .requiredWidth(50.dp)
+                .requiredHeight(35.dp)
+                .requiredWidth(35.dp)
                 .padding(1.dp)
         )
 
@@ -181,31 +206,88 @@ class MainActivityCompose : AppCompatActivity(), AmbientModeSupport.AmbientCallb
             text = "SENSOR LIST",
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding(5.dp)
+                .padding(1.dp)
                 .fillMaxWidth(),
             color = Color.White,
+            fontSize = 10.sp,
             style = MaterialTheme.typography.bodySmall
         )
 
         Divider(thickness = 0.5.dp, color = Color.White)
-        Spacer(modifier = Modifier.padding(top = 4.dp))
+        Spacer(modifier = Modifier.padding(top = 1.dp))
     }
 
     @Composable
     fun ScalingLazyColumnComposable(visibilityState: Boolean) {
+        val listState = rememberScalingLazyListState()
+        val coroutineScope = rememberCoroutineScope()
+
         if (visibilityState) {
-            ScalingLazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(),
-                contentPadding = PaddingValues(1.dp),
-                verticalArrangement = Arrangement.spacedBy(1.dp)
+            Scaffold(
+                positionIndicator = {
+                    PositionIndicator(scalingLazyListState = listState)
+                }
             ) {
-                if (sensorList != null) {
-                    items(sensorList) { item ->
-                        ComposableCardViewSensor(item.name, item.vendor)
+                val focusRequester = remember { FocusRequester() }
+                ScalingLazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .onRotaryScrollEvent {
+                            coroutineScope.launch {
+                                listState.scrollBy(it.verticalScrollPixels)
+                                listState.animateScrollBy(0f)
+                            }
+                            true
+                        }
+                        .focusRequester(focusRequester)
+                        .focusable(),
+                    contentPadding = PaddingValues(1.dp),
+                    verticalArrangement = Arrangement.spacedBy(1.dp),
+                    state = listState
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.padding(top = 1.dp))
+
+                        Image(
+                            painter = painterResource(R.drawable.sensor_info_frg),
+                            contentDescription = "Image Logo",
+                            modifier = Modifier
+                                .requiredHeight(40.dp)
+                                .requiredWidth(40.dp)
+                                .padding(1.dp)
+                        )
+                    }
+                    item {
+                        Text(
+                            text = "SENSOR LIST",
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .padding(1.dp)
+                                .fillMaxWidth(),
+                            color = Color.White,
+                            fontSize = 10.sp,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    item {
+                        Divider(thickness = 0.5.dp, color = Color.White)
+                        Spacer(modifier = Modifier.padding(top = 1.dp))
+                    }
+                    item {
+                        CircularProgressAnimated(progressVisibilityVal.value)
+                    }
+                    item {
+                        NoSensorsOnWearableDeviceComposable(noSensorsOnDeviceVisVal.value)
+                    }
+
+                    if (sensorList != null) {
+                        items(sensorList) { item ->
+                            ComposableCardViewSensor(item.name, item.vendor)
+                        }
                     }
                 }
+                LaunchedEffect(Unit) { focusRequester.requestFocus() }
             }
         }
     }
@@ -256,8 +338,9 @@ class MainActivityCompose : AppCompatActivity(), AmbientModeSupport.AmbientCallb
                     text = sensorName,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.labelMedium,
                     color = Color.White,
+                    fontSize = 11.sp,
                     maxLines = 1
                 )
                 Text(
@@ -265,7 +348,8 @@ class MainActivityCompose : AppCompatActivity(), AmbientModeSupport.AmbientCallb
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     color = Color.White,
-                    style = MaterialTheme.typography.labelMedium,
+                    fontSize = 9.sp,
+                    style = MaterialTheme.typography.labelSmall,
                     maxLines = 1
                 )
             }
