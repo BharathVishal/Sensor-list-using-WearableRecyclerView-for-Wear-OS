@@ -18,13 +18,13 @@ A wearable sensor list app for Wear OS that displays the sensors using ScalingLa
 
 &nbsp;
 ### Preview : 
-![Preview](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Preview/PreviewGif.gif)
+![Preview](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-for-Wear-OS/blob/master/Preview/PreviewGif.gif)
 
 
 &nbsp;
 ### Screenshots : 
-![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/3.png?s=40)
-![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView/blob/master/Screenshots/4.png?s=40)
+![Screenshot 1](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-for-Wear-OS/blob/master/Screenshots/3.png?s=40)
+![Screenshot 2](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-for-Wear-OS/blob/master/Screenshots/4.png?s=40)
 
 
 &nbsp;
@@ -51,7 +51,7 @@ Android Studio Giraffe | 2022.3.1 Patch 1
 &nbsp;
 
 #### License : 
-[Apache License 2.0](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-Wear-OS/blob/master/LICENSE)
+[Apache License 2.0](https://github.com/BharathVishal/Sensor-list-using-WearableRecyclerView-for-Wear-OS/blob/master/LICENSE)
 &nbsp;
 
 &nbsp;
