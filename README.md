@@ -1,4 +1,4 @@
-# Sensor-list-using-WearableRecyclerView-Wear OS
+# Sensor-list-using-WearableRecyclerView-for-Wear OS
  
 A wearable sensor list app for Wear OS that displays the sensors using ScalingLazyColumn in Jetpack Compose and using WearableRecyclerView in xml. Wearable app with compose for wear implementation.
 
