@@ -34,7 +34,7 @@ A wearable sensor list app for Wear OS that displays the sensors using ScalingLa
 
 &nbsp;
 ### SDK Info : 
-Min SDK : 25  | Target SDK : 34 | Gradle : 8.1.3  | Kotlin | Jetpack Compose
+Min SDK : 25  | Target SDK : 34 | Gradle : 8.2  | Kotlin | Jetpack Compose
 
 
 &nbsp;
@@ -44,7 +44,7 @@ Wear OS 2.x
 
 &nbsp;
 ### Android Studio Version : 
-Android Studio Giraffe | 2022.3.1 Patch 3
+Android Studio Hedgehog | 2023.1.1
 
 
 
@@ -63,5 +63,5 @@ Android is a trademark of Google LLC. WEAR OS BY GOOGLE is a trademark of Google
 
 
 
-© 2019-2023. Developed by Bharath Vishal G (https://github.com/BharathVishal). Thank you. :slightly_smiling_face:
+© 2019-2024. Developed by Bharath Vishal G (https://github.com/BharathVishal). Thank you. :slightly_smiling_face:
 
