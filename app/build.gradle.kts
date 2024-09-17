@@ -14,8 +14,8 @@ android {
         }
         minSdk = 25
         targetSdk = 34
-        versionCode = 101
-        versionName = "3.6"
+        versionCode = 103
+        versionName = "3.7"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -49,7 +49,7 @@ android {
         jvmTarget = "17"
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 
     packaging {
