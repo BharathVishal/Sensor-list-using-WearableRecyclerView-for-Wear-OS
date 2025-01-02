@@ -6,16 +6,16 @@ plugins {
 
 android {
     namespace = "com.bharathvishal.wearablerecyclerviewsample"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.bharathvishal.sensorlistusingwearablerecyclerview"
         vectorDrawables {
             useSupportLibrary = true
         }
         minSdk = 25
-        targetSdk = 34
-        versionCode = 103
-        versionName = "3.7"
+        targetSdk = 35
+        versionCode = 105
+        versionName = "3.8"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
